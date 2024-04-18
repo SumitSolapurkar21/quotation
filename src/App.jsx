@@ -11,13 +11,17 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 // pages ....
-import NavbarComponent from './Components/NavbarComponent'
+// import NavbarComponent from './Components/NavbarComponent'
 import Login from './Pages/Login'
 import Dashboard from './Pages/Dashboard'
 import Ipd from './Pages/IPD/Ipd'
 import Opd from './Pages/OPD/Opd'
 import AddOpd from './Pages/OPD/AddOpd';
 import AddIpd from './Pages/IPD/AddIpd';
+import Casualty from './Pages/CASUALTY/Casualty';
+import AddCasualty from './Pages/CASUALTY/AddCasualty';
+import Billing from './Pages/BILLING/Billing';
+import AddReceipt from './Pages/BILLING/AddReceipt';
 
 
 function App() {
@@ -33,6 +37,10 @@ function App() {
             <Route path='/addipd' element={<AddIpd />} />
             <Route path='/opd' element={<Opd />} />
             <Route path='/addopd' element={<AddOpd />} />
+            <Route path='/casualty' element={<Casualty />} />
+            <Route path='/addcasualty' element={<AddCasualty />} />
+            <Route path='/billing' element={<Billing />} />
+            <Route path='/addreceipt' element={<AddReceipt />} />
           </Routes>
         </BrowserRouter>
       </Provider>

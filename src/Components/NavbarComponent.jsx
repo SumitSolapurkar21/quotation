@@ -120,16 +120,20 @@ const NavbarComponent = () => {
                 ipd
               </Button>
             </Link>
-            <Button
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              casualty
-            </Button>
-            <Button
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              billing
-            </Button>
+            <Link to="/casualty" className='navlink'>
+              <Button
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                casualty
+              </Button>
+            </Link>
+            <Link to="/billing" className='navlink'>
+              <Button
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                billing
+              </Button>
+            </Link>
             <Button
               sx={{ my: 2, color: 'white', display: 'block' }}
             >

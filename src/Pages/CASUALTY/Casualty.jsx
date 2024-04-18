@@ -26,11 +26,7 @@ import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import TextField from '@mui/material/TextField';
 
-
-
-
-const Opd = () => {
-
+const Casualty = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -110,7 +106,7 @@ const Opd = () => {
                         aria-label="breadcrumb"
                     >
                         <Typography sx={{ fontSize: 12 }} color="text.primary" >
-                            OPD PATIENTS
+                           CASUALTY
                         </Typography>
                     </Breadcrumbs>
                 </Stack>
@@ -118,10 +114,10 @@ const Opd = () => {
                 <Divider />
                 <div className='cardHeader'>
                     <Typography variant="h6" my={1}>
-                        OPD PATIENTS
+                       CASUALTY
                     </Typography>
                     <Button size="small" variant="contained" >
-                        <Link to="/addopd" className='navlink'>ADD OPD</Link>
+                        <Link to="/addcasualty" className='navlink'>ADD CASUALTY</Link>
                     </Button>
 
                 </div>
@@ -188,4 +184,4 @@ const Opd = () => {
     )
 }
 
-export default Opd
+export default Casualty
