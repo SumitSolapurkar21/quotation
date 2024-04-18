@@ -1,0 +1,43 @@
+img.gmcLogo {
+    width: 50px;
+}
+
+.navlink {
+    text-decoration: none;
+    color: white;
+}
+
+.opdCard {
+    border-radius: 0px !important;
+    /* height: calc(100vh - 5.5em) !important; */
+    /* height: calc(100vh - 90px) !important; */
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+table tr td {
+    font-size: 0.8rem !important;
+}
+
+thead {
+    background: coral;
+}
+
+.opdSearchGrp {
+    display: flex;
+    align-items: center;
+}
+
+.opdForm {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.formInputField {
+    width: 23.6% !important;
+
+}
