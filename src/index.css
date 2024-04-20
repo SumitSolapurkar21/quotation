@@ -41,3 +41,18 @@ thead {
     width: 250px !important;
 
 }
+
+
+@media screen and (min-width: 375px) {
+    .formInputField {
+        width: 450px !important;
+
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .formInputField {
+        width: 340px !important
+
+    }
+}
