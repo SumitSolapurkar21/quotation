@@ -115,7 +115,7 @@ const Billing = () => {
                         Billing
                     </Typography>
 
-                    <div style={{ display: "flex",gap:'10px' }}>
+                    <div style={{ display: "flex",gap:'10px',flexWrap:"wrap" }}>
                         <Button size="small" variant="contained" >
                             <Link to="/addreceipt" className='navlink'>ADD RECEIPT</Link>
                         </Button>

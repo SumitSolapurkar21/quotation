@@ -17,6 +17,7 @@ img.gmcLogo {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 table tr td {
@@ -38,7 +39,7 @@ thead {
 }
 
 .formInputField {
-    width: 250px !important;
+    width: 150px !important;
 
 }
 
@@ -53,6 +54,5 @@ thead {
 @media screen and (min-width: 768px) {
     .formInputField {
         width: 340px !important
-
     }
 }
