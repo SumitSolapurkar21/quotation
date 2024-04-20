@@ -1,30 +1,18 @@
 import React from 'react'
-import Card from '@mui/material/Card';
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import { TextField, Card, IconButton, Menu, MenuItem, CardContent, Button, Typography, Divider, Breadcrumbs, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, ListItemText, ListItemIcon,Paper } from '@mui/material';
+
+//icons.......
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Stack from '@mui/material/Stack';
-import { Link } from 'react-router-dom';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import NavbarComponent from '../../Components/NavbarComponent';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import PrintIcon from '@mui/icons-material/Print';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import AssessmentIcon from '@mui/icons-material/Assessment';
-import TextField from '@mui/material/TextField';
+
+//route ....
+import { Link } from 'react-router-dom';
+
+// components .....
+import NavbarComponent from '../../Components/NavbarComponent';
+
 
 const Casualty = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -106,7 +94,7 @@ const Casualty = () => {
                         aria-label="breadcrumb"
                     >
                         <Typography sx={{ fontSize: 12 }} color="text.primary" >
-                           CASUALTY
+                            CASUALTY
                         </Typography>
                     </Breadcrumbs>
                 </Stack>
@@ -114,7 +102,7 @@ const Casualty = () => {
                 <Divider />
                 <div className='cardHeader'>
                     <Typography variant="h6" my={1}>
-                       CASUALTY
+                        CASUALTY
                     </Typography>
                     <Button size="small" variant="contained" >
                         <Link to="/addcasualty" className='navlink'>ADD CASUALTY</Link>

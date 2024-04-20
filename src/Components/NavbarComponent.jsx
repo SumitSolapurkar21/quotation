@@ -11,16 +11,18 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import gmclogo from '../assets/images/gmclogo.png'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const pages = ['Gmc Dashboard', 'opd', 'ipd', 'casualty', 'billing', 'reports', 'search', 'categorywise reports', 'direct billing', 'password'];
-const settings = ['Profile', 'Logout'];
+const pages = ['GMC DASHBOARD', 'OPD', 'IPD', 'CASUALTY', 'BILLING', 'REPORTS', 'SEARCH', 'CATEGORY REPORTS', 'DIRECT BILLING ', 'PASSWORD'];
+const settings = ['PROFILE', 'LOGOUT'];
 
 const NavbarComponent = () => {
+  const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [selectedPage, setSelectedPage] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -31,6 +33,22 @@ const NavbarComponent = () => {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+  const handleMenuItemClick = (page) => {
+    {
+      page === "GMC DASHBOARD" ? navigate('/dashboard') :
+        page === "OPD" ? navigate('/opd') :
+          page === "IPD" ? navigate('/ipd') :
+            page === "CASUALTY" ? navigate('/casualty') :
+              page === "BILLING" ? navigate('/billing') :
+                page === "REPORTS" ? navigate('/reports') :
+                  page === "SEARCH" ? navigate('/search') :
+                    page === "CATEGORY REPORTS" ? navigate('/categoryreports') :
+                      page === "DIRECT BILLING" ? navigate('/directbilling') :
+                        page === "PASSWORD" ? navigate('/password') :
+                          null
+    }
+    handleCloseNavMenu();
   };
 
   const handleCloseUserMenu = () => {
@@ -73,31 +91,13 @@ const NavbarComponent = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={() => handleMenuItemClick(page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Link to="/dashboard" className='navlink'>
               <Button

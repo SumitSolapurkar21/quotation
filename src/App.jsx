@@ -22,6 +22,8 @@ import Casualty from './Pages/CASUALTY/Casualty';
 import AddCasualty from './Pages/CASUALTY/AddCasualty';
 import Billing from './Pages/BILLING/Billing';
 import AddReceipt from './Pages/BILLING/AddReceipt';
+import ViewReceipt from './Pages/BILLING/ViewReceipt';
+import SeeBillingList from './Pages/BILLING/SeeBillingList';
 
 
 function App() {
@@ -41,6 +43,8 @@ function App() {
             <Route path='/addcasualty' element={<AddCasualty />} />
             <Route path='/billing' element={<Billing />} />
             <Route path='/addreceipt' element={<AddReceipt />} />
+            <Route path='/viewreceipt' element={<ViewReceipt />} />
+            <Route path='/seebillinglist' element={<SeeBillingList />} />
           </Routes>
         </BrowserRouter>
       </Provider>
