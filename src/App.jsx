@@ -24,6 +24,10 @@ import Billing from './Pages/BILLING/Billing';
 import AddReceipt from './Pages/BILLING/AddReceipt';
 import ViewReceipt from './Pages/BILLING/ViewReceipt';
 import SeeBillingList from './Pages/BILLING/SeeBillingList';
+import Reports from './Pages/REPORTS/Reports';
+import SearchPatients from './Pages/SEARCH/SearchPatients';
+import DirectBilling from './Pages/DIRECT_BILLING/DirectBilling';
+import AddDirectReceipt from './Pages/DIRECT_BILLING/AddDirectBilling';
 
 
 function App() {
@@ -45,6 +49,10 @@ function App() {
             <Route path='/addreceipt' element={<AddReceipt />} />
             <Route path='/viewreceipt' element={<ViewReceipt />} />
             <Route path='/seebillinglist' element={<SeeBillingList />} />
+            <Route path='/reports' element={<Reports />} />
+            <Route path='/search' element={<SearchPatients />} />
+            <Route path='/directbilling' element={<DirectBilling />} />
+            <Route path='/adddirectreceipt' element={<AddDirectReceipt />} />
           </Routes>
         </BrowserRouter>
       </Provider>

@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import NavbarComponent from '../../Components/NavbarComponent';
 
 
-const SeeBillingList = () => {
+const Reports = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -24,14 +24,14 @@ const SeeBillingList = () => {
         setAnchorEl(null);
     };
     // table code ...
-    function createData(name, billdate, originalamount, refund, refundreason, totalamount, action) {
-        return { name, billdate, originalamount, refund, refundreason, totalamount, action };
+    function createData(name, mobilenumber, gender, age, type, city, regno, regdate, department, unit, doctor, print) {
+        return { name, mobilenumber, gender, age, type, city, regno, regdate, department, unit, doctor, print };
     }
 
     const rows = [
-        createData('Sumit Girish Solapurkar', 9822179160, 'Male', 24, 4.0, "Nagpur", '21-09-2024'),
-        createData('Sumit Girish Solapurkar', 9822179160, 'Male', 24, 4.0, "Nagpur", '21-09-2024'),
-        createData('Sumit Girish Solapurkar', 9822179160, 'Male', 24, 4.0, "Nagpur", '21-09-2024'),
+        createData('Sumit Girish Solapurkar', 9822179160, 'Male', 24, 4.0, "Nagpur", 9876543221010, '21-09-2024', 'OPD', 2, 'Pranay Chandu Parihar', 'ok'),
+        createData('Sumit Girish Solapurkar', 9822179160, 'Male', 24, 4.0, "Nagpur", 9876543221010, '21-09-2024', 'OPD', 2, 'Pranay Chandu Parihar', 'ok'),
+        createData('Sumit Girish Solapurkar', 9822179160, 'Male', 24, 4.0, "Nagpur", 9876543221010, '21-09-2024', 'OPD', 2, 'Pranay Chandu Parihar', 'ok'),
 
     ];
     const patientTable = (
@@ -41,12 +41,17 @@ const SeeBillingList = () => {
                     <TableHead>
                         <TableRow>
                             <TableCell>Patient Name</TableCell>
+                            <TableCell align="left">Mobile Number</TableCell>
+                            <TableCell align="left">Gender</TableCell>
+                            <TableCell align="left">Age</TableCell>
+                            <TableCell align="left">Type</TableCell>
+                            <TableCell align="left">City</TableCell>
+                            <TableCell align="left">Registration No</TableCell>
+                            <TableCell align="left">Reg.Date</TableCell>
                             <TableCell align="left">Department</TableCell>
-                            <TableCell align="left">Category</TableCell>
-                            <TableCell align="left">Services</TableCell>
-                            <TableCell align="left">Amount</TableCell>
-                            <TableCell align="left">Registered Date</TableCell>
-                            <TableCell align="left">Action</TableCell>
+                            <TableCell align="left">Unit</TableCell>
+                            <TableCell align="left">Doctor</TableCell>
+                            <TableCell align="left">Print</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -58,12 +63,17 @@ const SeeBillingList = () => {
                                 <TableCell component="th" scope="row">
                                     {row.name}
                                 </TableCell>
-                                <TableCell align="left">{row.billdate}</TableCell>
-                                <TableCell align="left">{row.originalamount}</TableCell>
-                                <TableCell align="left">{row.refund}</TableCell>
-                                <TableCell align="left">{row.refundreason}</TableCell>
-                                <TableCell align="left">{row.totalamount}</TableCell>
-                                <TableCell align="left">{row.action}</TableCell>
+                                <TableCell align="left">{row.mobilenumber}</TableCell>
+                                <TableCell align="left">{row.gender}</TableCell>
+                                <TableCell align="left">{row.age}</TableCell>
+                                <TableCell align="left">{row.type}</TableCell>
+                                <TableCell align="left">{row.city}</TableCell>
+                                <TableCell align="left">{row.regno}</TableCell>
+                                <TableCell align="left">{row.regdate}</TableCell>
+                                <TableCell align="left">{row.department}</TableCell>
+                                <TableCell align="left">{row.unit}</TableCell>
+                                <TableCell align="left">{row.doctor}</TableCell>
+                                <TableCell align="left">{row.print}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -83,11 +93,8 @@ const SeeBillingList = () => {
                         separator="/"
                         aria-label="breadcrumb"
                     >
-                        <Typography sx={{ fontSize: 12 }} color="text.secondary" >
-                            <Link to="/billing" style={{ textDecoration: "none", color: "#00000099" }}>Billing</Link>
-                        </Typography>
                         <Typography sx={{ fontSize: 12 }} color="text.primary" >
-                            Patient List
+                            Reports
                         </Typography>
                     </Breadcrumbs>
                 </Stack>
@@ -95,16 +102,17 @@ const SeeBillingList = () => {
                 <Divider />
                 <div className='cardHeader'>
                     <Typography variant="h6" my={1}>
-                        Patient List
+                        Reports
                     </Typography>
-
 
                 </div>
                 <div className='opdSearchGrp' style={{ justifyContent: "space-between", marginTop: '10px', marginBottom: '10px' }}>
-
-                    <TextField className='formInputField' id="outlined-search" label="Search field" type="search" size='small' InputLabelProps={{
-                        shrink: true,
-                    }} />
+                    <div style={{ alignItems: "center", gap: 10, display: "flex" }}>
+                        <TextField className='formInputField' id="outlined-search" label="Search field" type="search" size='small' InputLabelProps={{
+                            shrink: true,
+                        }} />
+                        <Button size="small" variant="contained" >Search</Button>
+                    </div>
                     <div>
                         <IconButton
                             aria-label="more"
@@ -163,4 +171,4 @@ const SeeBillingList = () => {
     )
 }
 
-export default SeeBillingList
+export default Reports

@@ -43,7 +43,7 @@ const NavbarComponent = () => {
               page === "BILLING" ? navigate('/billing') :
                 page === "REPORTS" ? navigate('/reports') :
                   page === "SEARCH" ? navigate('/search') :
-                    page === "CATEGORY REPORTS" ? navigate('/categoryreports') :
+                    page === "CATEGORY REPORTS" ? navigate('/categorywisereports') :
                       page === "DIRECT BILLING" ? navigate('/directbilling') :
                         page === "PASSWORD" ? navigate('/password') :
                           null
@@ -134,31 +134,41 @@ const NavbarComponent = () => {
                 billing
               </Button>
             </Link>
-            <Button
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              reports
-            </Button>
-            <Button
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              search
-            </Button>
-            <Button
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              categorywise reports
-            </Button>
-            <Button
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              direct billing
-            </Button>
-            <Button
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              password
-            </Button>
+            <Link to="/reports" className='navlink'>
+              <Button
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                reports
+              </Button>
+            </Link>
+            <Link to="/search" className='navlink'>
+              <Button
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                search
+              </Button>
+            </Link>
+            <Link to="/categorywisereports" className='navlink'>
+              <Button
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                categorywise reports
+              </Button>
+            </Link>
+            <Link to="/directbilling" className='navlink'>
+              <Button
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                direct billing
+              </Button>
+            </Link>
+            <Link to="/password" className='navlink'>
+              <Button
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                password
+              </Button>
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
