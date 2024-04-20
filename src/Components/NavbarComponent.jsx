@@ -35,6 +35,7 @@ const NavbarComponent = () => {
     setAnchorElNav(null);
   };
   const handleMenuItemClick = (page) => {
+    console.log(page)
     {
       page === "GMC DASHBOARD" ? navigate('/dashboard') :
         page === "OPD" ? navigate('/opd') :

@@ -28,6 +28,7 @@ import Reports from './Pages/REPORTS/Reports';
 import SearchPatients from './Pages/SEARCH/SearchPatients';
 import DirectBilling from './Pages/DIRECT_BILLING/DirectBilling';
 import AddDirectReceipt from './Pages/DIRECT_BILLING/AddDirectBilling';
+import Categorywisereport from './Pages/CATEGORYWISE_REPORT/Categorywisereport';
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
             <Route path='/search' element={<SearchPatients />} />
             <Route path='/directbilling' element={<DirectBilling />} />
             <Route path='/adddirectreceipt' element={<AddDirectReceipt />} />
+            <Route path='/categorywisereports' element={<Categorywisereport />} />
           </Routes>
         </BrowserRouter>
       </Provider>
