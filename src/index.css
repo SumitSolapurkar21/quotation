@@ -42,7 +42,15 @@ thead {
     width: 150px !important;
 
 }
-
+.dashboardCards{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.dashCardContent{
+    width: 100%;
+    max-width: 300px;
+}
 
 @media screen and (min-width: 375px) {
     .formInputField {

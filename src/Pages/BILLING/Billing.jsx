@@ -133,6 +133,7 @@ const Billing = () => {
                     <TextField className='formInputField' id="outlined-search" label="Search field" type="search" size='small' InputLabelProps={{
                         shrink: true,
                     }} />
+                    
                     <div>
                         <IconButton
                             aria-label="more"

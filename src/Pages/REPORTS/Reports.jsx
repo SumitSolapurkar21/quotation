@@ -108,10 +108,13 @@ const Reports = () => {
                 </div>
                 <div className='opdSearchGrp' style={{ justifyContent: "space-between", marginTop: '10px', marginBottom: '10px' }}>
                     <div style={{ alignItems: "center", gap: 10, display: "flex" }}>
-                        <TextField className='formInputField' id="outlined-search" label="Search field" type="search" size='small' InputLabelProps={{
+                        <TextField className='formInputField' id="outlined-fromdate" label="From Date" type="date" size='small' InputLabelProps={{
                             shrink: true,
                         }} />
-                        <Button size="small" variant="contained" >Search</Button>
+                         <TextField className='formInputField' id="outlined-todate" label="To Date" type="date" size='small' InputLabelProps={{
+                            shrink: true,
+                        }} />
+                        <Button size="small" variant="contained" >Get</Button>
                     </div>
                     <div>
                         <IconButton
