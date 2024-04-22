@@ -93,18 +93,16 @@ const Dashboard = () => {
           </Typography>
 
         </div>
-        <div className='opdSearchGrp' style={{ justifyContent: "space-between", marginTop: '10px', marginBottom: '10px' }}>
-          <div style={{ alignItems: "center", gap: 10, display: "flex" }}>
-            <TextField className='formInputField' id="outlined-fromdate" label="From Date" type="date" size='small' InputLabelProps={{
+          <div className='dateFilter'>
+            <TextField className='formInputField1' id="outlined-fromdate" label="From Date" type="date" size='small' InputLabelProps={{
               shrink: true,
             }} />
-            <TextField className='formInputField' id="outlined-todate" label="To Date" type="date" size='small' InputLabelProps={{
+            <TextField className='formInputField1' id="outlined-todate" label="To Date" type="date" size='small' InputLabelProps={{
               shrink: true,
             }} />
             <Button size="small" variant="contained" >Get</Button>
           </div>
 
-        </div>
         <Divider />
         <div className='cards' style={{ marginTop: '10px' }}>
           <Typography variant="h6" my={1}>

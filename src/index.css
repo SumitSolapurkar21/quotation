@@ -42,20 +42,29 @@ thead {
     width: 150px !important;
 
 }
-.dashboardCards{
+
+.dashboardCards {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
 }
-.dashCardContent{
+
+.dashCardContent {
     width: 100%;
     max-width: 300px;
+}
+
+.dateFilter {
+    display: flex !important;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: "center";
+    margin-bottom: 10px;
 }
 
 @media screen and (min-width: 375px) {
     .formInputField {
         width: 450px !important;
-
     }
 }
 

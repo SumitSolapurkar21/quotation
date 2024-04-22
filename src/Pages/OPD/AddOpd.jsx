@@ -13,6 +13,9 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import NavbarComponent from '../../Components/NavbarComponent';
 
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+
 const AddOpd = () => {
     // gender ..
     const gender = [
@@ -30,6 +33,39 @@ const AddOpd = () => {
         },
 
     ];
+
+    const validationSchema = yup.object({
+        name: yup
+            .string('Enter your Name')
+            .required('Name is required'),
+    });
+
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            gender: '',
+            age: '',
+            days: '',
+            city: '',
+            othercity: '',
+            mobilenumber: '',
+            address: '',
+            category: '',
+            categorynumber: '',
+            department: '',
+            unit: '',
+            doctor: '',
+            policyname: '',
+            mlcnumber: ''
+        },
+        validationSchema: validationSchema,
+        onSubmit: (values, { resetForm }) => {
+            console.log(values)
+            // resetForm();
+            return false;
+        },
+    });
+
 
     // card code ....
     const card = (
@@ -58,7 +94,7 @@ const AddOpd = () => {
 
                 </div>
                 <div className='opdDiv'>
-                    <Box
+                    <Box onSubmit={formik.handleSubmit}
                         component="form"
                         sx={{
                             '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -74,8 +110,9 @@ const AddOpd = () => {
                             <Button variant="contained" >Search</Button>
                         </div>
                         <div className='opdForm'>
+
                             <TextField className='formInputField'
-                                id="outlined-number"
+                                id="name"
                                 label="Full Name"
                                 type="text"
                                 InputLabelProps={{
@@ -83,17 +120,26 @@ const AddOpd = () => {
                                 }}
                                 size='small'
                                 placeholder='Name'
+                                value={formik.values.name}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                error={formik.touched.name && Boolean(formik.errors.name)}
+                                helperText={formik.touched.name && formik.errors.name}
                             />
 
                             <TextField className='formInputField'
-                                id="outlined-select-gender"
+                                id="gender"
                                 select
                                 label="Gender"
                                 defaultValue="Select"
+                                name='gender'
                                 size='small'
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
+                                value={formik.values.gender}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             >
                                 {gender?.map((option) => (
                                     <MenuItem key={option.value} value={option.value}>
@@ -102,7 +148,7 @@ const AddOpd = () => {
                                 ))}
                             </TextField>
                             <TextField className='formInputField'
-                                id="outlined-number"
+                                id="age"
                                 label="Age"
                                 type="number"
                                 InputLabelProps={{
@@ -110,9 +156,12 @@ const AddOpd = () => {
                                 }}
                                 size='small'
                                 placeholder='Age'
+                                value={formik.values.age}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
                             <TextField className='formInputField'
-                                id="outlined-number"
+                                id="days"
                                 label="Days"
                                 type="number"
                                 InputLabelProps={{
@@ -120,15 +169,22 @@ const AddOpd = () => {
                                 }}
                                 size='small'
                                 placeholder='Days'
+                                value={formik.values.days}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
                             <TextField className='formInputField'
-                                id="outlined-select-city"
+                                id="city"
                                 select
                                 label="City"
                                 size='small'
+                                name='city'
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
+                                value={formik.values.city}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             >
                                 {gender?.map((option) => (
                                     <MenuItem key={option.value} value={option.value}>
@@ -137,7 +193,7 @@ const AddOpd = () => {
                                 ))}
                             </TextField>
                             <TextField className='formInputField'
-                                id="outlined-othercity"
+                                id="othercity"
                                 label="Other City"
                                 type="text"
                                 InputLabelProps={{
@@ -145,9 +201,12 @@ const AddOpd = () => {
                                 }}
                                 size='small'
                                 placeholder='Other City'
+                                value={formik.values.othercity}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
                             <TextField className='formInputField'
-                                id="outlined-number"
+                                id="mobilenumber"
                                 label="Mobile Number"
                                 type="number"
                                 InputLabelProps={{
@@ -155,9 +214,12 @@ const AddOpd = () => {
                                 }}
                                 size='small'
                                 placeholder='Mobile Number'
+                                value={formik.values.mobilenumber}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
                             <TextField className='formInputField'
-                                id="outlined-address"
+                                id="address"
                                 label="Address"
                                 type="text"
                                 InputLabelProps={{
@@ -165,15 +227,22 @@ const AddOpd = () => {
                                 }}
                                 size='small'
                                 placeholder='Address'
+                                value={formik.values.address}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
                             <TextField className='formInputField'
-                                id="outlined-select-city"
+                                id="category"
                                 select
                                 label="Category"
                                 size='small'
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
+                                name='category'
+                                value={formik.values.category}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             >
                                 {gender?.map((option) => (
                                     <MenuItem key={option.value} value={option.value}>
@@ -182,7 +251,7 @@ const AddOpd = () => {
                                 ))}
                             </TextField>
                             <TextField className='formInputField'
-                                id="outlined-number"
+                                id="categorynumber"
                                 label="Category Number"
                                 type="number"
                                 InputLabelProps={{
@@ -190,15 +259,22 @@ const AddOpd = () => {
                                 }}
                                 size='small'
                                 placeholder='Category Number'
+                                value={formik.values.categorynumber}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
                             <TextField className='formInputField'
-                                id="outlined-select-city"
+                                id="department"
                                 select
                                 label="Department"
                                 size='small'
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
+                                name='department'
+                                value={formik.values.department}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             >
                                 {gender?.map((option) => (
                                     <MenuItem key={option.value} value={option.value}>
@@ -207,33 +283,39 @@ const AddOpd = () => {
                                 ))}
                             </TextField>
                             <TextField className='formInputField'
-                                id="outlined-number"
+                                id="unit"
                                 label="Unit"
                                 type="number"
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
-                                InputProps={{
-                                    readOnly: true,
-                                }}
+                                // InputProps={{
+                                //     readOnly: true,
+                                // }}
                                 size='small'
                                 placeholder='Unit'
+                                value={formik.values.unit}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
                             <TextField className='formInputField'
-                                id="outlined-number"
+                                id="doctor"
                                 label="Doctor"
                                 type="text"
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
-                                InputProps={{
-                                    readOnly: true,
-                                }}
+                                // InputProps={{
+                                //     readOnly: true,
+                                // }}
                                 size='small'
                                 placeholder='Doctor'
+                                value={formik.values.doctor}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
                             <TextField className='formInputField'
-                                id="outlined-number"
+                                id="policyname"
                                 label="Policy Name"
                                 type="text"
                                 InputLabelProps={{
@@ -241,9 +323,12 @@ const AddOpd = () => {
                                 }}
                                 size='small'
                                 placeholder='Policy Name'
+                                value={formik.values.policyname}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
                             <TextField className='formInputField'
-                                id="outlined-number"
+                                id="mlcnumber"
                                 label="MLC No."
                                 type="text"
                                 InputLabelProps={{
@@ -251,9 +336,13 @@ const AddOpd = () => {
                                 }}
                                 size='small'
                                 placeholder='MLC No.'
+                                value={formik.values.mlcnumber}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                             />
+
                         </div>
-                        <Button variant='contained' sx={{ margin: '10px' }} size='small' >Save & Print</Button>
+                        <Button variant='contained' sx={{ margin: '10px' }} size='small' type='submit'  >Save & Print</Button>
 
                     </Box>
                 </div>
