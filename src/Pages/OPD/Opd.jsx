@@ -25,11 +25,14 @@ import PrintIcon from '@mui/icons-material/Print';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import TextField from '@mui/material/TextField';
+import { useSelector } from 'react-redux';
 
 
 
 
 const Opd = () => {
+    const _data = useSelector((state) => state.opdPatients);
+    const opdPatientsData = _data.data;
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -39,17 +42,7 @@ const Opd = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    // table code ...
-    function createData(name, mobilenumber, gender, age, type, city, regno, regdate, department, unit, doctor, print) {
-        return { name, mobilenumber, gender, age, type, city, regno, regdate, department, unit, doctor, print };
-    }
 
-    const rows = [
-        createData('Sumit Girish Solapurkar', 9822179160, 'Male', 24, 4.0, "Nagpur", 9876543221010, '21-09-2024', 'OPD', 2, 'Pranay Chandu Parihar', 'ok'),
-        createData('Sumit Girish Solapurkar', 9822179160, 'Male', 24, 4.0, "Nagpur", 9876543221010, '21-09-2024', 'OPD', 2, 'Pranay Chandu Parihar', 'ok'),
-        createData('Sumit Girish Solapurkar', 9822179160, 'Male', 24, 4.0, "Nagpur", 9876543221010, '21-09-2024', 'OPD', 2, 'Pranay Chandu Parihar', 'ok'),
-
-    ];
     const patientTable = (
         <>
             <TableContainer component={Paper}>
@@ -71,27 +64,31 @@ const Opd = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row, index) => (
-                            <TableRow
-                                key={index + 1}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell component="th" scope="row">
-                                    {row.name}
-                                </TableCell>
-                                <TableCell align="left">{row.mobilenumber}</TableCell>
-                                <TableCell align="left">{row.gender}</TableCell>
-                                <TableCell align="left">{row.age}</TableCell>
-                                <TableCell align="left">{row.type}</TableCell>
-                                <TableCell align="left">{row.city}</TableCell>
-                                <TableCell align="left">{row.regno}</TableCell>
-                                <TableCell align="left">{row.regdate}</TableCell>
-                                <TableCell align="left">{row.department}</TableCell>
-                                <TableCell align="left">{row.unit}</TableCell>
-                                <TableCell align="left">{row.doctor}</TableCell>
-                                <TableCell align="left">{row.print}</TableCell>
-                            </TableRow>
-                        ))}
+                        {opdPatientsData.length > 0 ?
+                            opdPatientsData?.map((row, index) => (
+                                <TableRow
+                                    key={index + 1}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell component="th" scope="row">
+                                        {row.name}
+                                    </TableCell>
+                                    <TableCell align="left">{row.mobilenumber}</TableCell>
+                                    <TableCell align="left">{row.gender}</TableCell>
+                                    <TableCell align="left">{row.age}</TableCell>
+                                    <TableCell align="left">{row.type}</TableCell>
+                                    <TableCell align="left">{row.city}</TableCell>
+                                    <TableCell align="left">{row.regno}</TableCell>
+                                    <TableCell align="left">{row.regdate}</TableCell>
+                                    <TableCell align="left">{row.department}</TableCell>
+                                    <TableCell align="left">{row.unit}</TableCell>
+                                    <TableCell align="left">{row.doctor}</TableCell>
+                                    <TableCell align="left">{row.print}</TableCell>
+                                </TableRow>
+                            )) :
+                            <TableRow>
+                                <TableCell colSpan={8}>NO DATA AVAILABLE</TableCell>
+                            </TableRow>}
                     </TableBody>
                 </Table>
             </TableContainer>

@@ -19,10 +19,13 @@ import Swal from 'sweetalert2';
 import 'animate.css';
 import 'sweetalert2/src/sweetalert2.scss'
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addOpdPatient } from '../../Store/opdSlice';
 
 
 const AddOpd = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     // gender ..
     const gender = [
         {
@@ -39,6 +42,28 @@ const AddOpd = () => {
         },
 
     ];
+    const city = [
+        {
+            value: 'nagpur',
+            label: 'Nagpur',
+        },
+        {
+            value: 'ramtek',
+            label: 'Ramtek',
+        },
+
+    ];
+    const department = [
+        {
+            value: 'ayurvedic',
+            label: 'Ayurvedic',
+        },
+        {
+            value: 'general',
+            label: 'General',
+        },
+
+    ];
 
     const validationSchema = yup.object({
         name: yup
@@ -46,6 +71,15 @@ const AddOpd = () => {
             .required('Name is required'),
     });
 
+    const currentDate = new Date();
+
+    // Get day, month, and year components
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Month is zero-based
+    const year = currentDate.getFullYear();
+
+    // Concatenate in ddmmyyyy format
+    const formattedDate = day + '-' + month + '-' + year;
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -62,11 +96,12 @@ const AddOpd = () => {
             unit: '',
             doctor: '',
             policyname: '',
-            mlcnumber: ''
+            mlcnumber: '',
+            regdate: formattedDate,
         },
         validationSchema: validationSchema,
         onSubmit: (values, { resetForm }) => {
-            console.log(values)
+            dispatch(addOpdPatient(values))
             Swal.fire({
                 icon: "success",
                 title: "Successfull",
@@ -218,7 +253,7 @@ const AddOpd = () => {
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                             >
-                                {gender?.map((option) => (
+                                {city?.map((option) => (
                                     <MenuItem key={option.value} value={option.value}>
                                         {option.label}
                                     </MenuItem>
@@ -308,7 +343,7 @@ const AddOpd = () => {
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                             >
-                                {gender?.map((option) => (
+                                {department?.map((option) => (
                                     <MenuItem key={option.value} value={option.value}>
                                         {option.label}
                                     </MenuItem>
