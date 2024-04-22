@@ -36,7 +36,7 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter basename="/gmchims">
           <Routes>
             <Route path='/' element={<Login />} />
             <Route path='/dashboard' element={<Dashboard />} />
