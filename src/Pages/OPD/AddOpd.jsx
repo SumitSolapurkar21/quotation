@@ -18,9 +18,11 @@ import * as yup from 'yup';
 import Swal from 'sweetalert2';
 import 'animate.css';
 import 'sweetalert2/src/sweetalert2.scss'
+import { useNavigate } from 'react-router-dom';
 
 
 const AddOpd = () => {
+    const navigate = useNavigate();
     // gender ..
     const gender = [
         {
@@ -83,6 +85,13 @@ const AddOpd = () => {
                     animate__faster
                   `
                 },
+                showConfirmButton: true,
+                confirmButtonText: "OK"
+
+            }).then((res) => {
+                if (res.isConfirmed) {
+                    navigate('/opd')
+                }
             });
             // resetForm();
             return false;
