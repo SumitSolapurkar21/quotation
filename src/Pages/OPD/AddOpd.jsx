@@ -15,6 +15,10 @@ import NavbarComponent from '../../Components/NavbarComponent';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import Swal from 'sweetalert2';
+import 'animate.css';
+import 'sweetalert2/src/sweetalert2.scss'
+
 
 const AddOpd = () => {
     // gender ..
@@ -61,6 +65,25 @@ const AddOpd = () => {
         validationSchema: validationSchema,
         onSubmit: (values, { resetForm }) => {
             console.log(values)
+            Swal.fire({
+                icon: "success",
+                title: "Successfull",
+                text: "OPD Patient Added !",
+                showClass: {
+                    popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster
+                  `
+                },
+                hideClass: {
+                    popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster
+                  `
+                },
+            });
             // resetForm();
             return false;
         },
