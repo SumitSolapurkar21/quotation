@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Stack from '@mui/material/Stack';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 
 import Box from '@mui/material/Box';
@@ -19,13 +19,19 @@ import Swal from 'sweetalert2';
 import 'animate.css';
 import 'sweetalert2/src/sweetalert2.scss'
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { addOpdPatient } from '../../Store/opdSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { editOpdPatient } from '../../Store/opdSlice';
 
 
-const AddOpd = () => {
+const EditOpd = () => {
+    const params = useParams();
+    const userdata = useSelector((state) => state.opdPatients);
+    const opdPatientsData = userdata;
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+
     // gender ..
     const gender = [
         {
@@ -65,48 +71,52 @@ const AddOpd = () => {
 
     ];
 
+    const existingUser = opdPatientsData?.filter(user => user.regno == params.id);
+
     const validationSchema = yup.object({
         name: yup
             .string('Enter your Name')
             .required('Name is required'),
     });
 
-    const currentDate = new Date();
+    // const currentDate = new Date();
 
-    // Get day, month, and year components
-    const day = String(currentDate.getDate()).padStart(2, '0');
-    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Month is zero-based
-    const year = currentDate.getFullYear();
+    // // Get day, month, and year components
+    // const day = String(currentDate.getDate()).padStart(2, '0');
+    // const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Month is zero-based
+    // const year = currentDate.getFullYear();
 
-    // Concatenate in ddmmyyyy format
-    const formattedDate = day + '-' + month + '-' + year;
+    // // Concatenate in ddmmyyyy format
+    // const formattedDate = day + '-' + month + '-' + year;
+
     const formik = useFormik({
         initialValues: {
-            name: '',
-            gender: '',
-            age: '',
-            days: '',
-            city: '',
-            othercity: '',
-            mobilenumber: '',
-            address: '',
-            category: '',
-            categorynumber: '',
-            department: '',
-            unit: '',
-            doctor: '',
-            policyname: '',
-            mlcnumber: '',
-            regdate: formattedDate,
-            regno: Math.floor(100000 + Math.random() * 900000),
+            id: params.id,
+            name: existingUser[0]?.name,
+            gender: existingUser[0]?.gender,
+            age: existingUser[0]?.age,
+            days: existingUser[0]?.days,
+            city: existingUser[0]?.city,
+            othercity: existingUser[0]?.othercity,
+            mobilenumber: existingUser[0]?.mobilenumber,
+            address: existingUser[0]?.address,
+            category: existingUser[0]?.category,
+            categorynumber: existingUser[0]?.categorynumber,
+            department: existingUser[0]?.department,
+            unit: existingUser[0]?.unit,
+            doctor: existingUser[0]?.doctor,
+            policyname: existingUser[0]?.policyname,
+            mlcnumber: existingUser[0]?.mlcnumber,
+            regdate: existingUser[0]?.regdate,
+            regno: existingUser[0]?.regno,
         },
         validationSchema: validationSchema,
-        onSubmit: (values, { resetForm }) => {
-            dispatch(addOpdPatient(values))
+        onSubmit: (values) => {
+            dispatch(editOpdPatient(values))
             Swal.fire({
                 icon: "success",
                 title: "Successfull",
-                text: "OPD Patient Added !",
+                text: "OPD Patient Details Updated !",
                 showClass: {
                     popup: `
                     animate__animated
@@ -149,7 +159,7 @@ const AddOpd = () => {
                             <Link to="/opd" style={{ textDecoration: "none", color: "#00000099" }}> OPD PATIENTS</Link>
                         </Typography>
                         <Typography sx={{ fontSize: 12 }} color="text.primary" >
-                            ADD OPD
+                            EDIT OPD
                         </Typography>
                     </Breadcrumbs>
                 </Stack>
@@ -410,7 +420,7 @@ const AddOpd = () => {
                             />
 
                         </div>
-                        <Button variant='contained' sx={{ margin: '10px' }} size='small' type='submit'  >Save & Print</Button>
+                        <Button variant='contained' sx={{ margin: '10px' }} size='small' type='submit'  >Update</Button>
 
                     </Box>
                 </div>
@@ -428,4 +438,4 @@ const AddOpd = () => {
     )
 }
 
-export default AddOpd
+export default EditOpd

@@ -29,6 +29,7 @@ import SearchPatients from './Pages/SEARCH/SearchPatients';
 import DirectBilling from './Pages/DIRECT_BILLING/DirectBilling';
 import AddDirectReceipt from './Pages/DIRECT_BILLING/AddDirectBilling';
 import Categorywisereport from './Pages/CATEGORYWISE_REPORT/Categorywisereport';
+import EditOpd from './Pages/OPD/EditOpd';
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        <BrowserRouter basename="/gmchims">
+        <BrowserRouter>
           <Routes>
             <Route path='/' element={<Login />} />
             <Route path='/dashboard' element={<Dashboard />} />
@@ -44,6 +45,7 @@ function App() {
             <Route path='/addipd' element={<AddIpd />} />
             <Route path='/opd' element={<Opd />} />
             <Route path='/addopd' element={<AddOpd />} />
+            <Route path='/editopd/:id' element={<EditOpd />} />
             <Route path='/casualty' element={<Casualty />} />
             <Route path='/addcasualty' element={<AddCasualty />} />
             <Route path='/billing' element={<Billing />} />

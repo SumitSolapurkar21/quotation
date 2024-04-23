@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Stack from '@mui/material/Stack';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -25,14 +25,16 @@ import PrintIcon from '@mui/icons-material/Print';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import TextField from '@mui/material/TextField';
-import { useSelector } from 'react-redux';
-
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import { deleteOpdPatient } from '../../Store/opdSlice';
 
 const Opd = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const _data = useSelector((state) => state.opdPatients);
-    const opdPatientsData = _data.data;
+    const opdPatientsData = _data;
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -43,6 +45,9 @@ const Opd = () => {
         setAnchorEl(null);
     };
 
+    const handlerRemovePatient = (id) => {
+        dispatch(deleteOpdPatient({ id: id }))
+    }
     const patientTable = (
         <>
             <TableContainer component={Paper}>
@@ -60,7 +65,7 @@ const Opd = () => {
                             <TableCell align="left">Department</TableCell>
                             <TableCell align="left">Unit</TableCell>
                             <TableCell align="left">Doctor</TableCell>
-                            <TableCell align="left">Print</TableCell>
+                            <TableCell align="left">Action</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -83,7 +88,17 @@ const Opd = () => {
                                     <TableCell align="left">{row.department}</TableCell>
                                     <TableCell align="left">{row.unit}</TableCell>
                                     <TableCell align="left">{row.doctor}</TableCell>
-                                    <TableCell align="left">{row.print}</TableCell>
+                                    <TableCell align="left">
+                                        <Stack direction="row" spacing={1}>
+                                            <IconButton aria-label="delete" color="primary" onClick={() => navigate(`/editopd/${row.regno}`)} >
+                                                <EditIcon />
+                                            </IconButton>
+                                            <IconButton aria-label="delete" color="error" onClick={() => handlerRemovePatient(row.regno)}>
+                                                <DeleteIcon />
+                                            </IconButton>
+
+                                        </Stack>
+                                    </TableCell>
                                 </TableRow>
                             )) :
                             <TableRow>
