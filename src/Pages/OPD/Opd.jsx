@@ -29,6 +29,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { deleteOpdPatient } from '../../Store/opdSlice';
+import Autocomplete from '@mui/material/Autocomplete';
 
 const Opd = () => {
     const dispatch = useDispatch();
@@ -44,7 +45,8 @@ const Opd = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
+    
+        
     const handlerRemovePatient = (id) => {
         dispatch(deleteOpdPatient({ id: id }))
     }
@@ -139,9 +141,31 @@ const Opd = () => {
                 </div>
                 <div className='opdSearchGrp' style={{ justifyContent: "space-between", marginTop: '10px', marginBottom: '10px' }}>
 
-                    <TextField className='formInputField' id="outlined-search" label="Search field" type="search" size='small' InputLabelProps={{
+                    {/* <TextField className='formInputField' id="outlined-search" label="Search field" type="search" size='small' InputLabelProps={{
                         shrink: true,
-                    }} />
+                    }} /> */}
+                    <Autocomplete
+                        size='small'
+                        freeSolo
+                        id="free-solo-2-demo"
+                        className='formInputField'
+                        disableClearable
+                        options={opdPatientsData?.map((option) => option.name)}
+                        renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                label="Search input"
+                                InputProps={{
+                                    ...params.InputProps,
+                                    type: 'search',
+                                    
+                                }}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                        )}
+                    />
                     <div>
                         <IconButton
                             aria-label="more"
